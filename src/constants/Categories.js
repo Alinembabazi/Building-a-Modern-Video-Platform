@@ -1,13 +1,26 @@
 
 export const Categories = [
   "All",
+  "New",
   "Coding",
-  "React",
+  "ReactJS",
+  "NextJS",
   "Music",
+  "Education",
+  "Podcast",
+  "Movie",
   "Gaming",
   "Live",
-  "Sports",
-  "Education",
+  "Football",
+  "Crypto",
+  "Fashion",
+  "Beauty",
+  "Art",
+  "Travel",
+  "Food",
+  "History",
+  "Science",
+  "Technology",
 ];
 // const Categories = ({ selectedCategory, setSelectedCategory }) => {
 //   return (

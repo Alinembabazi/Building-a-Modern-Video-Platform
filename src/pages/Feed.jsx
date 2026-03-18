@@ -1,14 +1,14 @@
 
-
 // src/pages/Feed.jsx
 import { useState } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import { fetchFromAPI } from '../utils/fetchFromAPI'
 import Sidebar from '../components/Sidebar'
-import { Categories } from '../constants/Categories'
+
 import VideoCard from '../components/VideoCard'
 import ChannelCard from '../components/ChannelCard'
 import Loader from '../components/Loader'
+import { Categories } from '../constants/Categories.js'
 
 const Feed = () => {
   const [selectedCategory, setSelectedCategory] = useState('New')
@@ -32,10 +32,10 @@ const Feed = () => {
           {Categories.map((category) => (
             <button
               key={category}
-              className={`px-4 py-2 rounded-full ${
+              className={`whitespace-nowrap px-3 py-1.5 rounded-lg text-sm font-medium transition-all duration-200 ${
                 selectedCategory === category
-                  ? 'bg-red-600 text-white'
-                  : 'bg-gray-700 text-gray-200'
+                  ? 'bg-white text-black'
+                  : 'bg-zinc-800 text-zinc-300 hover:bg-zinc-700 hover:text-white'
               }`}
               onClick={() => setSelectedCategory(category)}
             >

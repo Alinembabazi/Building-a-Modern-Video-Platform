@@ -1,83 +1,58 @@
-export const mockVideoData = {
-  items: [
-    {
-      id: { videoId: "dQw4w9WgXcQ" },
-      snippet: {
-        title: "Rick Astley - Never Gonna Give You Up (Official Music Video)",
-        channelTitle: "Rick Astley",
-        thumbnails: {
-          high: { url: "https://i.ytimg.com/vi/dQw4w9WgXcQ/hqdefault.jpg" },
-        },
-      },
-    },
-    {
-      id: { videoId: "jNQXAC9IVRw" },
-      snippet: {
-        title: "Me at the zoo",
-        channelTitle: "jawed",
-        thumbnails: {
-          high: { url: "https://i.ytimg.com/vi/jNQXAC9IVRw/hqdefault.jpg" },
-        },
-      },
-    },
-    {
-      id: { videoId: "LXb3EKWsInQ" },
-      snippet: {
-        title: "COSTA RICA IN 4K 60fps HDR (ULTRA HD)",
-        channelTitle: "Jacob + Katie Schwarz",
-        thumbnails: {
-          high: { url: "https://i.ytimg.com/vi/LXb3EKWsInQ/hqdefault.jpg" },
-        },
-      },
-    },
-    {
-      id: { videoId: "M7lc1UVf-VE" },
-      snippet: {
-        title: "YouTube Developers Live: Embedded Web Player Customization",
-        channelTitle: "YouTube Developers",
-        thumbnails: {
-          high: { url: "https://i.ytimg.com/vi/M7lc1UVf-VE/hqdefault.jpg" },
-        },
-      },
-    },
-    {
-      id: { channelId: "UC_x5XG1OV2P6uZZ5FSM9Ttw" },
-      snippet: {
-        title: "Google Developers",
-        thumbnails: {
-          high: { url: "https://yt3.ggpht.com/ytc/AIdro_lzG8E8D29mngNpskP3A0u2F017kX6A02w8c13kSWe1tZ4=s800-c-k-c0x00ffffff-no-rj" },
-        },
-      },
-    },
-    {
-      id: { videoId: "kJQP7kiw5Fk" },
-      snippet: {
-        title: "Luis Fonsi - Despacito ft. Daddy Yankee",
-        channelTitle: "LuisFonsiVEVO",
-        thumbnails: {
-          high: { url: "https://i.ytimg.com/vi/kJQP7kiw5Fk/hqdefault.jpg" },
-        },
-      },
-    },
-    {
-      id: { videoId: "9bZkp7q19f0" },
-      snippet: {
-        title: "PSY - GANGNAM STYLE(강남스타일) M/V",
-        channelTitle: "officialpsy",
-        thumbnails: {
-          high: { url: "https://i.ytimg.com/vi/9bZkp7q19f0/hqdefault.jpg" },
-        },
-      },
-    },
-    {
-      id: { videoId: "RgKAFK5djSk" },
-      snippet: {
-        title: "Wiz Khalifa - See You Again ft. Charlie Puth [Official Video] Furious 7 Soundtrack",
-        channelTitle: "Wiz Khalifa",
-        thumbnails: {
-          high: { url: "https://i.ytimg.com/vi/RgKAFK5djSk/hqdefault.jpg" },
-        },
-      },
+export const getMockData = (url) => {
+  // Extract category from url if available
+  const match = url.match(/q=([^&]*)/);
+  const category = match ? decodeURIComponent(match[1]) : "New";
+
+  // If the request is for specific Video Details
+  if (url.includes("videos?")) {
+    return {
+      items: [
+        {
+          id: "dQw4w9WgXcQ", // typical id structure for detail endpoint
+          snippet: {
+            title: `Awesome ${category} Video Tutorial`,
+            channelTitle: "Modern Code Channel",
+            description: "This is a detailed description of the video. It accurately plays requirements for YouTube using react-player. Thank you for watching!",
+            thumbnails: {
+              high: { url: "https://i.ytimg.com/vi/dQw4w9WgXcQ/hqdefault.jpg" }
+            }
+          },
+          statistics: { viewCount: "1500000", likeCount: "25000" }
+        }
+      ]
+    };
+  }
+
+  // Generate some dynamic mock videos based on the Category clicked
+  const generateVideo = (title, id) => ({
+    id: { videoId: id },
+    snippet: {
+      title: title,
+      channelTitle: "Tech & Media Hub",
+      thumbnails: {
+        high: { url: `https://i.ytimg.com/vi/${id}/hqdefault.jpg` }
+      }
     }
-  ]
+  });
+
+  return {
+    items: [
+      generateVideo(`${category} Crash Course for Beginners 2026`, "jNQXAC9IVRw"),
+      generateVideo(`Advanced ${category} Architecture Patterns`, "LXb3EKWsInQ"),
+      generateVideo(`Why Everyone Uses ${category} in Production`, "M7lc1UVf-VE"),
+      generateVideo(`Building a YouTube Clone with ${category}`, "kJQP7kiw5Fk"),
+      generateVideo(`Top 10 ${category} Frameworks to Learn`, "9bZkp7q19f0"),
+      generateVideo(`${category} Live Coding Session & Q&A`, "RgKAFK5djSk"),
+      generateVideo(`Deploying ${category} Applications at Scale`, "dQw4w9WgXcQ"),
+      {
+        id: { channelId: "UC_x5XG1OV2P6uZZ5FSM9Ttw" },
+        snippet: {
+          title: `Official ${category} Channel`,
+          thumbnails: {
+            high: { url: "https://yt3.ggpht.com/ytc/AIdro_lzG8E8D29mngNpskP3A0u2F017kX6A02w8c13kSWe1tZ4=s800-c-k-c0x00ffffff-no-rj" }
+          }
+        }
+      }
+    ]
+  };
 };

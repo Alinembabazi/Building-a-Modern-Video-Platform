@@ -1,5 +1,5 @@
 import axios from "axios";
-import { mockVideoData } from "./mockData";
+import { getMockData } from "./mockData.js";
 
 const BASE_URL = "https://youtube-v31.p.rapidapi.com";
 
@@ -16,7 +16,7 @@ export const fetchFromAPI = async (url) => {
     const { data } = await axios.get(`${BASE_URL}/${url}`, options);
     return data;
   } catch (error) {
-    console.warn("API Error caught (e.g., 403 or 429). Falling back to mock data so you can continue building the UI:", error.message);
-    return mockVideoData;
+    console.warn("API Error caught (e.g., 403 or 429). Falling back to dynamic mock data so you can continue building the UI:", error.message);
+    return getMockData(url);
   }
 };
