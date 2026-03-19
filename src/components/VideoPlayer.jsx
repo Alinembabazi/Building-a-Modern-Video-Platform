@@ -1,5 +1,4 @@
 import ReactPlayer from "react-player";
-
 const VideoPlayer = ({ videoId }) => {
   return (
     <div className="w-full max-w-4xl mx-auto my-4">

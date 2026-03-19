@@ -1,14 +1,11 @@
 export const getMockData = (url) => {
-  // Extract category from url if available
   const match = url.match(/q=([^&]*)/);
   const category = match ? decodeURIComponent(match[1]) : "New";
-
-  // If the request is for specific Video Details
   if (url.includes("videos?")) {
     return {
       items: [
         {
-          id: "dQw4w9WgXcQ", // typical id structure for detail endpoint
+          id: "dQw4w9WgXcQ",
           snippet: {
             title: `Awesome ${category} Video Tutorial`,
             channelTitle: "Modern Code Channel",
@@ -22,8 +19,6 @@ export const getMockData = (url) => {
       ]
     };
   }
-
-  // Generate some dynamic mock videos based on the Category clicked
   const generateVideo = (title, id) => ({
     id: { videoId: id },
     snippet: {
