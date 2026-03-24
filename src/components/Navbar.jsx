@@ -1,5 +1,3 @@
-// src/components/Navbar.jsx
-
 import { Link } from "react-router-dom";
 import SearchBar from "./SearchBar";
 import { FaYoutube } from "react-icons/fa";
@@ -20,7 +18,6 @@ const Navbar = () => {
         <SearchBar />
       </div>
 
-      {/* Excluded the sign-in button specifically as requested by leaving right-side empty! */}
       <div className="w-10"></div>
     </div>
   );

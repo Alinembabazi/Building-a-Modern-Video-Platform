@@ -1,4 +1,3 @@
-// src/components/Loader.jsx
 
 const Loader = () => (
   <div className="flex justify-center items-center h-screen">
